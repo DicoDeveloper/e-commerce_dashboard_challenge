@@ -1,0 +1,17 @@
+div {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: flex-end;
+}
+
+mat-icon {
+  position: absolute;
+  height: 50px;
+  width: 150px;
+  bottom: 20%;
+}
+
+.company-logo-image {
+  width: 230px;
+}

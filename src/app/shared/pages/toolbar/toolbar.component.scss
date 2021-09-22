@@ -1,0 +1,21 @@
+.nav-toolbar {
+  justify-content: space-between;
+  background: #2459ff;
+}
+
+.nav-is-mobile .nav-toolbar {
+  position: fixed;
+  z-index: 2;
+  justify-content: space-between;
+}
+
+.user-button,
+.change-company-button {
+  float: right;
+}
+
+.company-logo-image {
+  width: 35px;
+  margin-left: 25px;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<mat-sidenav-container class="sidenav nav-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  fixedInViewport="true" [attr.role]="'navigation'" mode="'side'" opened="true">
+  <mat-sidenav #drawer [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
+    class="{{mobileQuery.matches && drawer._width < 350 ? 'mobile-hidden' : ''}}">
+    <mat-nav-list>
+      <div>
+        <a mat-list-item routerLink="./dashboard" (click)="drawer._width > 60 ? drawer.toggle() : null" class="item-menu"
+          matTooltip="{{drawer._width <= 60 ? 'Dashboard' : ''}}" [matTooltipPosition]="'after'">
+          <mat-icon class="material-icons">space_dashboard</mat-icon>
+          <span class="navigation-item-label">Dashboard</span>
+          <mat-divider class="navigation-divider"></mat-divider>
+        </a>
+        <a mat-list-item routerLink="./order-charts" (click)="drawer._width > 60 ? drawer.toggle() : null"
+          class="item-menu" matTooltip="{{drawer._width <= 60 ? 'Gráficos' : ''}}" [matTooltipPosition]="'after'">
+          <mat-icon class="material-icons">
+            trending_up</mat-icon>
+          <span class="navigation-item-label">Gráficos</span>
+          <mat-divider class="navigation-divider"></mat-divider>
+        </a>
+        <a mat-list-item routerLink="./order-table-listing" (click)="drawer._width > 60 ? drawer.toggle() : null"
+          class="item-menu" matTooltip="{{drawer._width <= 60 ? 'Pedidos' : ''}}" [matTooltipPosition]="'after'">
+          <mat-icon class="material-icons" matBadge="{{1}}" matBadgeColor="accent">
+            format_list_numbered</mat-icon>
+          <span class="navigation-item-label">Pedidos</span>
+          <mat-divider class="navigation-divider"></mat-divider>
+        </a>
+      </div>
+    </mat-nav-list>
+    <img src="/assets/images/logo_blue.jpg" class="image-mobile" *ngIf="mobileQuery.matches">
+  </mat-sidenav>
+
+  <mat-sidenav-content class="{{mobileQuery.matches ? 'mobile-hidden' : ''}}">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<a (click)="drawer.toggle()" id="{{drawerToggleId}}"></a>

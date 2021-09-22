@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="nav-toolbar">
+  <div style="display: flex; align-items: center;">
+    <button mat-icon-button (click)="drawerToggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="/assets/images/logo.png" class="company-logo-image" *ngIf="!mobileQuery.matches"
+    (click)="setDashboard()">
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <div style="display: contents;">
+      <span style="cursor: pointer;">{{company}}</span>
+      <button class="change-company-button" mat-icon-button matTooltip="Trocar de empresa"
+        [matTooltipPosition]="'above'">
+        <mat-icon class="material-icons">swap_horiz</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center;">
+    <div *ngIf="!mobileQuery.matches" style="display: contents;">
+      <span style="font-size: smaller;">{{user.name}}</span>
+      <button class="user-button" mat-icon-button [matMenuTriggerFor]="beforeMenu">
+        <mat-icon class="material-icons">account_circle
+        </mat-icon>
+      </button>
+    </div>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <span class="navigation-item-label">Usuário</span>
+      </button>
+      <button mat-menu-item>
+        <span class="navigation-item-label">Sair</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
