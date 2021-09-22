@@ -6,7 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { OrderTableListingRoutingModule } from '../routers/order.tableListing-routing.module';
+import { OrderTableListingRoutingModule } from '../routes/order.tableListing-routing.module';
 
 @NgModule({
   declarations: [
