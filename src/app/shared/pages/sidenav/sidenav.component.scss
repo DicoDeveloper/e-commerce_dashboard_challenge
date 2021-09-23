@@ -230,3 +230,7 @@ mat-sidenav:not(.mat-drawer-opened).mobile-hidden {
 ::ng-deep .mat-nav-list .mat-badge-content {
   background: #1bc5bd;
 }
+
+::ng-deep .mat-drawer-container {
+  background-color: #e8e8e8;
+}

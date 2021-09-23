@@ -14,6 +14,11 @@ const routes: Routes = [
         path: 'order-table-listing',
         loadChildren: () =>
           import('../orders/modules/order.tableListing.module').then((m) => m.OrderTableListingModule),
+      },
+      {
+        path: 'order-charts',
+        loadChildren: () =>
+          import('../orders/modules/order.charts.module').then((m) => m.OrderChartsModule),
       }
     ],
     component: HomeComponent,
