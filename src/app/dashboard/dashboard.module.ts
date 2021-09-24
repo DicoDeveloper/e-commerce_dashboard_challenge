@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderChartsModule } from '../orders/modules/order.charts.module';
+import { OrderTableListingModule } from '../orders/modules/order.tableListing.module';
 import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
@@ -10,6 +12,9 @@ import { DashboardComponent } from './dashboard.component';
   imports: [
     FormsModule,
     CommonModule,
+    ReactiveFormsModule,
+    OrderChartsModule,
+    OrderTableListingModule,
   ],
   providers: [],
   exports: [

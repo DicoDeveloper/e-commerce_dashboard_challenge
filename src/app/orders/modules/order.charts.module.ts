@@ -8,7 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { SharedPipeModule } from 'src/app/shared/pipes/sharedPipe.Module';
 import { OrderChartsComponent } from '../components/order.charts.component';
 import { OrderChartsRoutingModule } from '../routes/order.charts-routing.module';
-import { ChartModule } from '@syncfusion/ej2-angular-charts';
+import { ChartModule, ColumnSeriesService, CategoryService, LineSeriesService, TooltipRenderService, TooltipService } from '@syncfusion/ej2-angular-charts';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,12 @@ import { ChartModule } from '@syncfusion/ej2-angular-charts';
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    ColumnSeriesService,
+    CategoryService,
+    LineSeriesService,
+    TooltipRenderService,
+    TooltipService,
   ],
   exports: [
     OrderChartsComponent,

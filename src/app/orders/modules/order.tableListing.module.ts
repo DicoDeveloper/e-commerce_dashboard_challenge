@@ -25,10 +25,7 @@ import { SharedPipeModule } from 'src/app/shared/pipes/sharedPipe.Module';
     MatPaginatorModule,
     SharedPipeModule,
   ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'pt-BR' },
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
-  ],
+  providers: [],
   exports: [
     OrderTableListingComponent,
     OrderFormatAddressPipe,

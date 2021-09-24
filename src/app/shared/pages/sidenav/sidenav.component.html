@@ -1,11 +1,11 @@
-<mat-sidenav-container class="sidenav nav-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-  fixedInViewport="true" [attr.role]="'navigation'" mode="'side'" opened="true">
+<mat-sidenav-container class="sidenav nav-sidenav-container" fixedInViewport="true" [attr.role]="'navigation'"
+  mode="'side'" opened="true">
   <mat-sidenav #drawer [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
     class="{{mobileQuery.matches && drawer._width < 350 ? 'mobile-hidden' : ''}}">
     <mat-nav-list>
       <div>
-        <a mat-list-item routerLink="./dashboard" (click)="drawer._width > 60 ? drawer.toggle() : null" class="item-menu"
-          matTooltip="{{drawer._width <= 60 ? 'Dashboard' : ''}}" [matTooltipPosition]="'after'">
+        <a mat-list-item routerLink="./dashboard" (click)="drawer._width > 60 ? drawer.toggle() : null"
+          class="item-menu" matTooltip="{{drawer._width <= 60 ? 'Dashboard' : ''}}" [matTooltipPosition]="'after'">
           <mat-icon class="material-icons">space_dashboard</mat-icon>
           <span class="navigation-item-label">Dashboard</span>
           <mat-divider class="navigation-divider"></mat-divider>
