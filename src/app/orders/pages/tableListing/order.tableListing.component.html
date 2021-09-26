@@ -1,85 +1,93 @@
 <div class="div-table-orders" #div_table_orders>
-  <table mat-table [dataSource]="orders" multiTemplateDataRows>
-    <ng-container matColumnDef="number">
-      <th mat-header-cell *matHeaderCellDef>Nº</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.number }}</td>
-    </ng-container>
+  <div class="table-details">
+    <table mat-table [dataSource]="orders" multiTemplateDataRows>
+      <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef>Nº</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.number }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef>Criação</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.createdAt }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Criação</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.createdAt | date: "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="deliverydate">
-      <th mat-header-cell *matHeaderCellDef>Entrega</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.deliverydate | date: "dd/MM/yyyy" }}</td>
-    </ng-container>
+      <ng-container matColumnDef="deliverydate">
+        <th mat-header-cell *matHeaderCellDef>Entrega</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.deliverydate | date: "dd/MM/yyyy" }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef>Endereço</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.address | orderFormatAddress }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Endereço</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.deliveryAddress | orderFormatAddress }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="totalValue">
-      <th mat-header-cell *matHeaderCellDef>Total</th>
-      <td mat-cell *matCellDef="let element" style="font-weight: bold;">
-        {{ element.totalValue | formattedPrice }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="totalValue">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element" style="font-weight: bold;">
+          {{ element.totalValue | formattedPrice }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Ações</th>
-      <td mat-cell *matCellDef="let element" (click)="expandedElement = expandedElement === element ? null : element"
-        matTooltip="Detalhes do pedido" [matTooltipPosition]="'above'" class="td-actions">
-        <mat-icon class="material-icons">menu_open</mat-icon>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let element" (click)="expandedElement = expandedElement === element ? null : element"
+          matTooltip="Detalhes do pedido" [matTooltipPosition]="'above'" class="td-actions">
+          <mat-icon class="material-icons">menu_open</mat-icon>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let element" [attr.colspan]="6">
-        <div class="element-detail-table" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-          <div class="elemento-description">
-            <div class="products-details">
-              <div class="product-card" *ngFor="let product of element.products">
-                <span style="margin-right: 5px; margin-left: -3px; font-size: 25px;">
-                  {{element.products.indexOf(product) + 1}}
-                </span>
-                <div style="display: flex; flex-direction: column; border-left: solid 1px #b5b5b5; padding-left: 5px;">
-                  <div>Nome: <span>{{product.name}}</span></div>
-                  <div>Valor: <span style="font-weight: bold;">{{product.value | formattedPrice}}</span></div>
-                  <div style="font-size: 12px; color: #848484;">Descrição: {{product.description}}</div>
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="6">
+          <div class="element-detail-table" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="elemento-description">
+              <div class="products-details">
+                <div class="product-card" *ngFor="let product of element.items">
+                  <div class="left-side-card">
+                    <span style="font-size: 12px;">Qtd</span>
+                    <span>{{product.quantity}}</span>
+                  </div>
+                  <div
+                    style="display: flex; flex-direction: column; border-left: solid 1px #b5b5b5; padding-left: 5px;">
+                    <div class="product-name"> {{product.name}} </div>
+                    <div class="product-description">{{product.description}}</div>
+                    <div style="justify-content: space-between;">
+                      <span style="font-weight: bold;">{{product.value | formattedPrice}}</span>
+                      <mat-icon class="material-icons sale-icon">local_offer</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="delivery-team-details-card">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="font-weight: bold; width: 30%; border-bottom: solid 1px #2459ff85;">Equipe</span>
+                  <span style="font-weight: bold; width: 50%; border-bottom: solid 1px #2459ff85;">Descrição</span>
+                  <span style="font-weight: bold; width: 20%; border-bottom: solid 1px #2459ff85;">Placa do
+                    veículo</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="width: 30%;">{{element?.deliveryTeam?.name}}</span>
+                  <span style="width: 50%;">{{element?.deliveryTeam?.description}}</span>
+                  <span style="width: 20%;">{{element?.deliveryTeam?.vehicleLicensePlate}}</span>
                 </div>
               </div>
             </div>
-            <div class="delivery-team-details-card">
-              <div style="display: flex; justify-content: space-between;">
-                <span style="font-weight: bold; width: 30%; border-bottom: solid 1px #61b3af;">Equipe</span>
-                <span style="font-weight: bold; width: 50%; border-bottom: solid 1px #61b3af;">Descrição</span>
-                <span style="font-weight: bold; width: 20%; border-bottom: solid 1px #61b3af;">Placa do veículo</span>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <span style="width: 30%;">{{element?.deliveryTeam?.name}}</span>
-                <span style="width: 50%;">{{element?.deliveryTeam?.description}}</span>
-                <span style="width: 20%;">{{element?.deliveryTeam?.vehicleLicensePlate}}</span>
-              </div>
-            </div>
           </div>
-        </div>
-      </td>
-    </ng-container>
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="tableColuns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColuns" class="elemento-tr-row"
-      [class.example-expanded-row]="expandedElement === row"></tr>
+      <tr mat-header-row *matHeaderRowDef="tableColuns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: tableColuns" class="elemento-tr-row"
+        [class.example-expanded-row]="expandedElement === row"></tr>
 
-    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-  </table>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+  </div>
   <div
     style="box-shadow: 0px 0px 8px -4px #777777; width: 100%; max-width: 1300px; position: sticky; bottom: 0; min-width: 600px;">
     <div class="div-paginator-orders">

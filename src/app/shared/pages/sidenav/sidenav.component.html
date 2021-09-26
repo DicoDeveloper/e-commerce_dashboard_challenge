@@ -19,7 +19,7 @@
         </a>
         <a mat-list-item routerLink="./order-table-listing" (click)="drawer._width > 60 ? drawer.toggle() : null"
           class="item-menu" matTooltip="{{drawer._width <= 60 ? 'Pedidos' : ''}}" [matTooltipPosition]="'after'">
-          <mat-icon class="material-icons" matBadge="{{1}}" matBadgeColor="accent">
+          <mat-icon class="material-icons" matBadge="{{ordersCount}}" matBadgeColor="accent">
             format_list_numbered</mat-icon>
           <span class="navigation-item-label">Pedidos</span>
           <mat-divider class="navigation-divider"></mat-divider>

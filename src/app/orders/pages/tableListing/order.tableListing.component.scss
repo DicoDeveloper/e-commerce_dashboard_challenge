@@ -38,8 +38,6 @@ td.mat-footer-cell:last-of-type {
 }
 
 .div-table-orders {
-  overflow: auto;
-  height: calc(99vh - 80px);
   margin-top: 20px;
   transition: all 0.3s ease 0s;
   width: 100%;
@@ -47,9 +45,16 @@ td.mat-footer-cell:last-of-type {
   align-items: center;
   display: flex;
 
-  table {
+  .table-details {
+    max-height: calc(99vh - 140px);
+    overflow: auto;
     max-width: 1300px;
-    box-shadow: 0px 0px 8px -4px #777777;
+    width: 100%;
+
+    table {
+      max-width: 1300px;
+      box-shadow: 0px 0px 8px -4px #777777;
+    }
   }
 }
 
@@ -130,7 +135,7 @@ tr.example-detail-row {
 
 .delivery-team-details-card {
   padding: 5px 10px;
-  background: #1bc5bd38;
+  background: #2459ff38;
   display: flex;
   flex-direction: column;
 }
@@ -160,7 +165,6 @@ tr.elemento-tr-row:not(.example-expanded-row):active {
   display: flex;
   flex-flow: wrap;
   justify-content: flex-start;
-  align-items: flex-start;
 
   .product-card {
     padding: 5px 10px;
@@ -169,7 +173,6 @@ tr.elemento-tr-row:not(.example-expanded-row):active {
     margin: 5px;
     background-color: white;
     display: flex;
-    align-items: center;
     justify-content: flex-start;
     line-height: initial;
     max-width: 150px;
@@ -178,6 +181,42 @@ tr.elemento-tr-row:not(.example-expanded-row):active {
       display: flex;
       justify-content: space-between;
       width: 100%;
+    }
+
+    .left-side-card {
+      margin-right: 5px;
+      margin-left: -3px;
+      font-size: 25px;
+      min-width: 15px;
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+      width: initial;
+      line-height: 1;
+    }
+
+    .product-name {
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      font-size: 13px;
+    }
+
+    .product-description {
+      font-size: 11px;
+      color: #848484;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+
+    .sale-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 16px;
+      color: #1bc5bd;
     }
   }
 }

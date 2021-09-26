@@ -1,10 +1,11 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { Address } from 'src/app/domain/dtos/address';
-import { DeliveryTeam } from 'src/app/domain/dtos/deliveryTeam';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { merge, of as observableOf } from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { Order } from 'src/app/domain/dtos/order';
-import { Product } from 'src/app/domain/dtos/product';
+import { OrderService } from '../services/order.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,20 +24,7 @@ import { Product } from 'src/app/domain/dtos/product';
 })
 export class OrderTableListingComponent implements OnInit {
 
-  orders: Order[] = [{
-    number: 1, createdAt: '01/09/2021', deliverydate: new Date, totalValue: 1550.90, address: {
-      city: 'Blumenau', neighborhood: 'Vila Nova', number: '123A', postCode: '89056-100', state: 'Santa Catarina', street: 'Johann Ohf',
-    } as Address,
-    deliveryTeam: { name: 'Entregadores a Jato', description: 'Entregadores da zona norte de Santa Catarina', vehicleLicensePlate: 'MEM-6227' } as DeliveryTeam,
-    products: [{ description: 'Produto novo', name: 'Camisa Polo', value: 99.90 } as Product]
-  } as Order,
-  {
-    number: 1, createdAt: '01/09/2021', deliverydate: new Date, totalValue: 1550.90, address: {
-      city: 'Blumenau', neighborhood: 'Vila Nova', number: '123A', postCode: '89056-100', state: 'Santa Catarina', street: 'Johann Ohf',
-    } as Address,
-    deliveryTeam: { name: 'Entregadores a Jato', description: 'Entregadores da zona norte de Santa Catarina', vehicleLicensePlate: 'MEM-6227' } as DeliveryTeam,
-    products: [{ description: 'Produto novo', name: 'Camisa Polo', value: 99.90 } as Product]
-  } as Order];
+  orders: Order[] = [];
   readonly tableColuns: string[] = ['number', 'createdAt', 'deliverydate', 'address', 'totalValue', 'actions'];
   resultsLength = 0;
   expandedElement: Order | null;
@@ -44,10 +32,32 @@ export class OrderTableListingComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
+    private readonly orderService: OrderService,
+    private readonly _snackBar: MatSnackBar,
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.setPaginatorEvent();
+  }
 
+  public setPaginatorEvent() {
+    merge(this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          return this.orderService!.get(this.paginator.pageIndex * 20);
+        }),
+        map((data) => {
+          this.resultsLength = data.totalCount;
+          return data.orders;
+        }),
+        catchError(() => {
+          return observableOf([]);
+        })
+      )
+      .subscribe((data) => {
+        this.orders = data as Order[];
+      });
   }
 
 }

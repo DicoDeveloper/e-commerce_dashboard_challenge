@@ -10,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'E-commerce Dashboard Challenge';
+  title = 'E commerce Dashboard Challenge';
 
   constructor(
     private readonly router: Router,
@@ -19,9 +19,6 @@ export class AppComponent {
   ) {
     this.registrarIconesSVG();
     this.router.navigate(['/splash']);
-    setTimeout(() => {
-      this.router.navigate(['/home']);
-    }, 3000);
   }
 
   private registrarIconesSVG() {

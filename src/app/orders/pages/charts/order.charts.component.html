@@ -1,10 +1,12 @@
 <div class="chart-area">
   <ejs-chart [primaryXAxis]="primaryXAxis" [title]="'Qtd. de pedidos x qtd. entrega no ano'" [tooltip]="tooltip"
-    [legendSettings]="legendSettings">
+    [legendSettings]="legendSettings" [palettes]="palette">
     <e-series-collection>
-      <e-series [dataSource]="chartData" type="Column" xName="year" yName="gold" name="Gold" legendShape="Circle">
+      <e-series [dataSource]="chartData" type="Column" xName="month" yName="quantity_created" name="Qtd. pedidos"
+        legendShape="Circle">
       </e-series>
-      <e-series [dataSource]="chartData" type="Line" xName="year" yName="silver" name="Silver" legendShape="Circle">
+      <e-series [dataSource]="chartData" type="Line" xName="month" yName="quantity_delivered" name="Qtd. entregas"
+        legendShape="Circle">
       </e-series>
     </e-series-collection>
   </ejs-chart>
