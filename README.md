@@ -1,6 +1,6 @@
+# e-commerce_dashboard_challenge
 https://user-images.githubusercontent.com/35655181/134821917-1fca4cd2-6f7c-45e8-8d25-6d9fca11a701.mp4
 
-# e-commerce_dashboard_challenge
 Projeto Front-end de um dashboard para e-commerce.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.15.
