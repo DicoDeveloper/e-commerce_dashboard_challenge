@@ -1,3 +1,5 @@
+https://user-images.githubusercontent.com/35655181/134821917-1fca4cd2-6f7c-45e8-8d25-6d9fca11a701.mp4
+
 # e-commerce_dashboard_challenge
 Projeto Front-end de um dashboard para e-commerce.
 
@@ -25,4 +27,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI
+
+ README](https://github.com/angular/angular-cli/blob/master/README.md).
